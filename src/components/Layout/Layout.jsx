@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './Layout.module.scss'
 import NavBar from 'components/NavBar/NavBar';
 
-function Layout(children) {
+function Layout({ children }) {
     return (
-        <div className={styles.layout}>
-            <NavBar />
-        </div>
+        <Suspense fallback="loading">
+            <div className={styles.layout}>
+                <NavBar />
+                <main>{children}</main>
+            </div>
+        </Suspense>
     );
 }
 
